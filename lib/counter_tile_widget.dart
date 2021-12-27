@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'models/tables.dart';
+
 class CounterTileWidget extends StatelessWidget {
-  const CounterTileWidget({Key? key}) : super(key: key);
+  final Thing thing;
+  final MyDatabase database;
+  CounterTileWidget({Key? key, required this.thing, required this.database})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +24,22 @@ class CounterTileWidget extends StatelessWidget {
         child: ListTile(
           contentPadding: EdgeInsets.all(3),
           leading: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              updateCount(thing, thing.count - 1);
+            },
             tooltip: 'Increment',
             mini: true,
             child: const Icon(Icons.remove),
           ),
-          title: const Text(
-            "Thing  3",
+          title: Text(
+            "${thing.name} : ${thing.count}",
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 20),
           ),
           trailing: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              updateCount(thing, thing.count + 1);
+            },
             tooltip: 'Increment',
             mini: true,
             child: const Icon(Icons.add),
@@ -43,5 +52,11 @@ class CounterTileWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  updateCount(Thing thing, int count) {
+    if (count >= 0) {
+      database.updateCountByThingId(thing.id, count);
+    }
   }
 }
