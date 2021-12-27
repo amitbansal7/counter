@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: const MyHomePage(title: 'Counter'),
     );
@@ -43,8 +43,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final thingsController = TextEditingController();
   _displayDialog(BuildContext context, MyDatabase database) async {
+    final thingsController = TextEditingController();
+
     Widget okButton = TextButton(
       child: const Text("Add"),
       onPressed: () {
@@ -62,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
         controller: thingsController,
         decoration: const InputDecoration(
           border: UnderlineInputBorder(),
-          labelText: 'Enter thing name',
+          labelText: 'Enter name',
         ),
       ),
       actions: [

@@ -51,6 +51,10 @@ class MyDatabase extends _$MyDatabase {
     return into(things).insertOnConflictUpdate(thing);
   }
 
+  Future<void> deleteByThingId(int thingId) {
+    return (delete(things)..where((tbl) => tbl.id.equals(thingId))).go();
+  }
+
   Future<int> updateCountByThingId(int thingId, int count) async {
     return (update(things)..where((t) => t.id.equals(thingId))).write(
       ThingsCompanion(

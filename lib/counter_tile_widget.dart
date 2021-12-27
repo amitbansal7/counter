@@ -55,7 +55,9 @@ class CounterTileWidget extends StatelessWidget {
   }
 
   updateCount(Thing thing, int count) {
-    if (count >= 0) {
+    if (count < 0) {
+      database.deleteByThingId(thing.id);
+    } else {
       database.updateCountByThingId(thing.id, count);
     }
   }
