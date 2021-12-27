@@ -11,7 +11,7 @@ class CounterTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 30, right: 30, top: 5),
+      padding: const EdgeInsets.only(left: 30, right: 30, top: 5),
       child: Card(
         elevation: 6,
         shape: const StadiumBorder(
@@ -22,7 +22,7 @@ class CounterTileWidget extends StatelessWidget {
           ),
         ),
         child: ListTile(
-          contentPadding: EdgeInsets.all(3),
+          contentPadding: const EdgeInsets.all(3),
           leading: FloatingActionButton(
             onPressed: () {
               updateCount(thing, thing.count - 1);
@@ -34,7 +34,7 @@ class CounterTileWidget extends StatelessWidget {
           title: Text(
             "${thing.name} : ${thing.count}",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
           trailing: FloatingActionButton(
             onPressed: () {
